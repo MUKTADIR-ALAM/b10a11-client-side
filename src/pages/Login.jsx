@@ -16,29 +16,31 @@ export default function Login() {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    setErrorMessage('');
+    setErrorMessage("");
     const form = new FormData(e.target);
     const email = form.get("email");
     const password = form.get("password");
     logInUser(email, password)
-    .then((res)=>{navigate(location?.state ? location?.state:'/')})
-    .catch((err)=>{setErrorMessage(err.message)
-      toast.error(err.message);
-    })
+      .then((res) => {
+        navigate(location?.state ? location?.state : "/");
+      })
+      .catch((err) => {
+        setErrorMessage(err.message);
+        toast.error(err.message);
+      });
   };
 
-
-  const hadleGoogleLogin = () =>{
+  const hadleGoogleLogin = () => {
     signInWithGoogle()
-    .then((result) => {
-      navigate(location?.state ? location?.state:'/')
-      toast.success('Successfully login');
-    })
-    .catch((error) => {
-      setErrorMessage(err.message);
-      toast.error(err.message);
-    });
-  }
+      .then((result) => {
+        navigate(location?.state ? location?.state : "/");
+        toast.success("Successfully login");
+      })
+      .catch((error) => {
+        setErrorMessage(err.message);
+        toast.error(err.message);
+      });
+  };
 
   return (
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-8 p-2">
@@ -61,14 +63,17 @@ export default function Login() {
             <span className="label-text">Password</span>
           </label>
           <input
-            type={showPassword?'text':'password'}
+            type={showPassword ? "text" : "password"}
             name="password"
             placeholder="password"
             className="input input-bordered"
             required
           />
-          <div onClick={()=>setShowPassword(!showPassword)} className="w-fit btn btn-xs absolute top-[56%] right-[5%]">
-            {showPassword?<FaEye size={15} />:<FaEyeSlash size={15} />}
+          <div
+            onClick={() => setShowPassword(!showPassword)}
+            className="w-fit btn btn-xs absolute top-[56%] right-[5%]"
+          >
+            {showPassword ? <FaEye size={15} /> : <FaEyeSlash size={15} />}
           </div>
           {/* <label className="label">
             <Link to={"/forgetpass"} className="label-text-alt link link-hover">
@@ -77,7 +82,9 @@ export default function Login() {
           </label> */}
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary bg-primary border-none">Login</button>
+          <button className="btn btn-primary bg-primary border-none">
+            Login
+          </button>
         </div>
         <div>
           <div onClick={hadleGoogleLogin} className="btn w-full">

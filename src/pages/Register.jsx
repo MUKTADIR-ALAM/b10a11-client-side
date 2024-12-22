@@ -6,15 +6,19 @@ import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
 export default function Register() {
-  const { createUserWithemailPass, setUser, updateUserProfile,signInWithGoogle } =
-    useContext(AuthContext);
+  const {
+    createUserWithemailPass,
+    setUser,
+    updateUserProfile,
+    signInWithGoogle,
+  } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const hadleGoogleLogin = () => {
     signInWithGoogle()
       .then((result) => {
         navigate(location?.state ? location?.state : "/");
-        toast.success('Successfully Registerd!');
+        toast.success("Successfully Registerd!");
       })
       .catch((error) => {
         setErrorMessage(err.message);
@@ -36,7 +40,7 @@ export default function Register() {
       setErrorMessage(
         "Must have an Uppercase and a Lowercase also length must be at least 6 character in the password "
       );
-      toast.error("chose strong password")
+      toast.error("chose strong password");
       return;
     }
     createUserWithemailPass(email, password)

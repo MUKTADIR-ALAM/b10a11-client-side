@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  const {user} = useContext(AuthContext);
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -40,7 +43,10 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-        <div className="dropdown dropdown-end">
+        {/* user connection */}
+        {
+          user ? 
+          <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
             role="button"
@@ -71,6 +77,11 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
+        :
+        <Link to={'/login'} className="btn">Login</Link>
+        }
+
+       
       </div>
     </div>
   );
