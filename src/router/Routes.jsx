@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout";
 import Login from "../pages/Login";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
+import AddMarathon from "../pages/AddMarathon";
 
 
 
@@ -22,7 +23,11 @@ export const Routes = createBrowserRouter([
             {
                 path:'/register',
                 element: <Register/>
-            }
+            },
+            {
+                path:'/addMarathon',
+                element: <AddMarathon/>
+            },
         ]
     }
 ])
