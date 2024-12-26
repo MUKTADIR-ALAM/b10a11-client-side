@@ -55,7 +55,7 @@ export default function MyApplications() {
                     <td>{myApplication.height} cm</td>
                     <td className="space-x-2 space-y-1 flex justify-center items-center">
                       <Link
-                        to={`/UpdateMarathon/${myApplication._id}`}
+                        to={`/UpdateApplication/${myApplication._id}`}
                         className="btn"
                       >
                         <RxUpdate />
