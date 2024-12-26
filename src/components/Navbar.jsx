@@ -13,7 +13,7 @@ export default function Navbar() {
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end mr-2">
-          <NavLink className={"btn btn-ghost"}>All Marathons</NavLink>
+          <NavLink to={'/allMarathon'} className={"btn btn-ghost"}>All Marathons</NavLink>
         </div>
         {/* user connection */}
         {user ? (
@@ -38,7 +38,10 @@ export default function Navbar() {
                 </NavLink>
               </li>
               <li>
-                <a>Settings</a>
+                <NavLink to={`/marathons/${user?.email}`}>My Marathons</NavLink>
+              </li>
+              <li>
+                <NavLink to={`/applications/${user?.email}`}>My Applications</NavLink>
               </li>
               <li>
                 <button onClick={signOutUser}>Logout</button>
