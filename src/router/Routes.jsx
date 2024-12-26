@@ -10,6 +10,7 @@ import MyMarathons from "../pages/MyMarathons";
 import UpdateMarathon from "../pages/UpdateMarathon";
 import MyApplications from "../pages/MyApplications";
 import ApplicationUpdate from "../pages/ApplicationUpdate";
+import Registration from "../pages/Registration";
 
 
 
@@ -57,6 +58,10 @@ export const Routes = createBrowserRouter([
             {
                 path:'/UpdateApplication/:id',
                 element: <ApplicationUpdate/>
+            },
+            {
+                path:'/registration/:id',
+                element: <Registration/>
             },
         ]
     }

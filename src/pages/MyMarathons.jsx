@@ -1,13 +1,14 @@
-import React from "react";
+import { useContext } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { RxUpdate } from "react-icons/rx";
-import { MdDeleteForever } from "react-icons/md";
-
+import React from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import MyMarathonTd from "../components/MyMarathonTd";
 
 export default function MyMarathons() {
+  const { user } = useContext(AuthContext);
   const queryClient = useQueryClient();
   const { email } = useParams();
   const axiosSecure = useAxiosSecure();
@@ -18,7 +19,8 @@ export default function MyMarathons() {
       return res.data;
     },
   });
-  console.log(myMarathons);
+
+  
 
   if (isPending) {
     return (
@@ -28,7 +30,7 @@ export default function MyMarathons() {
     );
   }
 
-  const handleDelete = async(id) => {
+  const handleDelete = async (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -45,19 +47,8 @@ export default function MyMarathons() {
           icon: "success",
         });
 
-        // fetch(`https://crowdcube-server-nine.vercel.app/campaigns/${id}`, {
-        //   method: "DELETE",
-        // })
-        //   .then((res) => res.json())
-        //   .then((result) => {
-        //     console.log(result)
-        //   });
-        // const remaining = campaigns.filter((camp) => camp._id != id);
-        // setCampaigns(remaining);
-
         const result = await axiosSecure.delete(`/deleteMarathon/${id}`);
-        queryClient.invalidateQueries({ queryKey: ['myMarathons'] });
-
+        queryClient.invalidateQueries({ queryKey: ["myMarathons"] });
       }
     });
   };
@@ -84,30 +75,9 @@ export default function MyMarathons() {
             </thead>
             <tbody>
               {/* row 1 */}
-              {myMarathons.map((marathon, idx) => {
+              {myMarathons.map((marathon,idx) => {
                 return (
-                  <tr key={marathon._id}>
-                    <th>{idx + 1}</th>
-                    <td>{marathon.marathon_title}</td>
-                    <td>{marathon.location}</td>
-                    <td>{marathon.running_distance} Km</td>
-                    <td>{marathon.start_registration}</td>
-                    <td>{marathon.end_registration}</td>
-                    <td className="space-x-2 space-y-1 flex justify-center items-center">
-                      <Link
-                        to={`/UpdateMarathon/${marathon._id}`}
-                        className="btn"
-                      >
-                        <RxUpdate />
-                      </Link>
-                      <button
-                        onClick={() => handleDelete(marathon._id)}
-                        className="btn"
-                      >
-                        <MdDeleteForever />
-                      </button>
-                    </td>
-                  </tr>
+                  <MyMarathonTd key={idx} marathon={marathon} handleDelete={handleDelete} idx={idx}/>
                 );
               })}
             </tbody>

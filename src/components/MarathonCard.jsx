@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export default function MarathonCard({marathon}) {
   const { _id, marathon_title, location, marathon_image, running_distance, start_registration, end_registration, marathon_start, created_time, description, organizer, registrationCount } = marathon;
 
-  console.log(marathon_title)
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure>

@@ -10,6 +10,7 @@ export default function UpdateMarathon() {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
+
   const { isPending, data: marathon } = useQuery({
     queryKey: [`marathon${id}`],
     queryFn: async () => {
@@ -33,11 +34,11 @@ export default function UpdateMarathon() {
     registrationCount,
   } = marathon || {};
 
-  const [start_registration_u, setStart_registration] = useState(start_registration);
+  const [start_registration_u, setStart_registration] =
+    useState(start_registration);
   const [end_registration_u, setEnd_registration] = useState(end_registration);
   const [marathon_start_u, setMarathon_start] = useState(marathon_start);
   const [created_time_u, setCreated_time] = useState(new Date());
-
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -50,23 +51,21 @@ export default function UpdateMarathon() {
       return;
     }
 
-
     const start_end = compareAsc(start_registration, end_registration);
-    const end_play = compareAsc(end_registration,marathon_start);
+    const end_play = compareAsc(end_registration, marathon_start);
 
-    if(start_end===1){
-      toast.error('end registration date must be heigher than start')
+    if (start_end === 1) {
+      toast.error("end registration date must be heigher than start");
       return;
     }
-    if(start_end === 0){
-      toast.error('start and end registration date cannot be same')
+    if (start_end === 0) {
+      toast.error("start and end registration date cannot be same");
       return;
     }
-    if(end_play === 1){
-      toast.error('marathon start date should come after end registration')
+    if (end_play === 1) {
+      toast.error("marathon start date should come after end registration");
       return;
     }
-
 
     fdata.running_distance = parseInt(fdata.running_distance);
     // fdata.organizer = {
@@ -92,6 +91,7 @@ export default function UpdateMarathon() {
       </div>
     );
   }
+
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
       <section className=" p-2 md:p-6 mx-auto bg-white rounded-md shadow-md ">

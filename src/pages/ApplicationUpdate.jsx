@@ -32,7 +32,6 @@ export default function ApplicationUpdate() {
     start_date, 
     marathon_id 
   } = application || {};
-  console.log(id,_id)
 
   const handleSubmit = async(e) => {
     e.preventDefault();
