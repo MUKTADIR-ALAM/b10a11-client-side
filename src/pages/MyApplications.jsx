@@ -1,12 +1,14 @@
 import React from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Link, useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { RxUpdate } from "react-icons/rx";
 import { MdDeleteForever } from "react-icons/md";
+import Swal from "sweetalert2";
 
 export default function MyApplications() {
   const { email } = useParams();
+  const queryClient = useQueryClient();
   const axiosSecure = useAxiosSecure();
   const { isPending, data: myApplications } = useQuery({
     queryKey: ["myApplications"],
@@ -15,7 +17,40 @@ export default function MyApplications() {
       return res.data;
     },
   });
-  console.log(myApplications);
+  
+  const handleDelete = async(id) => {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+  
+          // fetch(`https://crowdcube-server-nine.vercel.app/campaigns/${id}`, {
+          //   method: "DELETE",
+          // })
+          //   .then((res) => res.json())
+          //   .then((result) => {
+          //     console.log(result)
+          //   });
+          // const remaining = campaigns.filter((camp) => camp._id != id);
+          // setCampaigns(remaining);
+  
+          const result = await axiosSecure.delete(`/my-application/${id}`);
+          queryClient.invalidateQueries({ queryKey: ['myApplications'] });
+  
+        }
+      });
+    };
 
   if (isPending) {
     return (

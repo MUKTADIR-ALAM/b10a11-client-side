@@ -11,7 +11,7 @@ export default function UpdateMarathon() {
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const { isPending, data: marathon } = useQuery({
-    queryKey: ["marathon"],
+    queryKey: [`marathon${id}`],
     queryFn: async () => {
       const res = await axiosSecure.get(`marathon/${id}`);
       return res.data;

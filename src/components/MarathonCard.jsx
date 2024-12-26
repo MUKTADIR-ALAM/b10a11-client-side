@@ -9,6 +9,7 @@ export default function MarathonCard({marathon}) {
     <div className="card bg-base-100 shadow-xl">
       <figure>
         <img
+          className="h-56 w-full"
           src={marathon_image}
           alt="Shoes"
         />

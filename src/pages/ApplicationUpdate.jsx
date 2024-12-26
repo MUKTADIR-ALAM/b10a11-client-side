@@ -1,18 +1,20 @@
 import React from "react";
 import { useContext } from "react";
 import DatePicker from "react-datepicker";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 export default function ApplicationUpdate() {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   // console.log(id);
   const { data: application } = useQuery({
-    queryKey: ["application"],
+    queryKey: [`application${id}`],
     queryFn: async () => {
       const res = await axiosSecure.get(`/my-application/${id}`);
       return res.data;
@@ -30,12 +32,20 @@ export default function ApplicationUpdate() {
     start_date, 
     marathon_id 
   } = application || {};
+  console.log(id,_id)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const fdata = Object.fromEntries(formData.entries());
     console.log(fdata);
+    try{
+      const {data} = await axiosSecure.patch(`/my-application/${_id}`,fdata);
+      toast.success('updated successfully');
+      navigate(`/applications/${user?.email}`)
+    }catch(err){
+      console.log(err);
+    }
   };
 
   return (
