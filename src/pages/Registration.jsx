@@ -2,13 +2,14 @@ import React from 'react';
 import { useContext } from 'react'
 import DatePicker from 'react-datepicker'
 import { AuthContext } from '../provider/AuthProvider';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
 export default function Registration() {
   const {user} = useContext(AuthContext);
+  const navigate = useNavigate();
   const {id} = useParams();
   const axiosSecure = useAxiosSecure();
 
@@ -46,7 +47,8 @@ export default function Registration() {
     }
     try {
       const {data} = await axiosSecure.post(`/add-application`, fdata)
-      console.log(data);
+      toast.success('you application submited successfully')
+      navigate(`/dashboard/applications/${user?.email}`)
     } catch (err) {
       toast.error(err.response.data.message);
     }

@@ -77,13 +77,13 @@ export default function MyApplications() {
     });
   };
 
-  if (isPending) {
-    return (
-      <div className="w-fit m-auto">
-        <span className="loading loading-bars loading-lg"></span>
-      </div>
-    );
-  }
+  // if (isPending) {
+  //   return (
+  //     <div className="w-fit m-auto">
+  //       <span className="loading loading-bars loading-lg"></span>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="flex flex-col justify-center items-center my-8">
@@ -109,7 +109,10 @@ export default function MyApplications() {
             </div>
         </div>
       </div>
-      {myApplications.length ? (
+      {
+        isPending? <div className="w-fit m-auto">
+        <span className="loading loading-bars loading-lg"></span>
+      </div>:myApplications.length ? (
         <div className="overflow-x-auto w-11/12 mx-auto">
           <table className="table">
             {/* head */}
@@ -141,7 +144,8 @@ export default function MyApplications() {
         </div>
       ) : (
         <p>you did not apply any marathon</p>
-      )}
+      )
+      }
     </div>
   );
 }

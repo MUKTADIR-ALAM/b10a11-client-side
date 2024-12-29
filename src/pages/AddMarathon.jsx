@@ -5,10 +5,12 @@ import { AuthContext } from "../provider/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { compareAsc } from "date-fns";
+import { useNavigate } from "react-router-dom";
+import { use } from "react";
 
 export default function AddMarathon() {
   const { user } = useContext(AuthContext);
-  // console.log(user)
+  const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const [start_registration, setStart_registration] = useState(new Date());
   const [end_registration, setEnd_registration] = useState(new Date());
@@ -58,6 +60,7 @@ export default function AddMarathon() {
     try {
       const { data } = await axiosSecure.post(`/add-Marathons`, fdata);
       toast.success('successfully marathon added');
+      navigate(`/dashboard/marathons/${user?.email}`)
     } catch (err) {
       console.log(err);
     }
