@@ -10,15 +10,18 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
+
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const [modalId, setModalId] = useState();
-  const [applyModalId,setApplyModalId] =useState();
+  const [applyModalId, setApplyModalId] = useState();
 
   const provider = new GoogleAuthProvider();
 
@@ -50,7 +53,25 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     const unSubscirbe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+
+      if (currentUser?.email) {
+        const user = { email: currentUser.email };
+        axios.post(`http://localhost:9000/jwt`,user,{withCredentials:true})
+        .then(res=>{
+          console.log('login token',res.data);
+          setLoading(false);
+        })
+      }else{
+        axios.post(`http://localhost:9000/logout`,{},{
+          withCredentials:true
+        })
+        .then(res=>{
+          console.log('logout',res.data);
+          setLoading(false);
+        })
+      }
+
+      
     });
     return () => unSubscirbe();
   }, []);
@@ -68,7 +89,7 @@ export default function AuthProvider({ children }) {
     modalId,
     setModalId,
     applyModalId,
-    setApplyModalId
+    setApplyModalId,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

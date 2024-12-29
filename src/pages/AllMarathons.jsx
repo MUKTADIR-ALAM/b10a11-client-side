@@ -11,8 +11,9 @@ export default function AllMarathons() {
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios(
-        `${import.meta.env.VITE_API_URL}/all-marathons`
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/all-marathons`,
+        { withCredentials: true }
       );
       setMarathons(data);
       setLoading(false);
@@ -29,11 +30,11 @@ export default function AllMarathons() {
   // });
 
   const handleSort = () => {
-   const sorted =  marathons.sort(
+    const sorted = marathons.sort(
       (a, b) => new Date(a.marathon_start) - new Date(b.marathon_start)
     );
-    setMarathons([...sorted])
-    console.log(sorted)
+    setMarathons([...sorted]);
+    console.log(sorted);
   };
   if (loading) {
     return (
