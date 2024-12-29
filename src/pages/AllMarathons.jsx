@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import MarathonCard from "../components/MarathonCard";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 export default function AllMarathons() {
   const axiosSecure = useAxiosSecure();
@@ -44,6 +45,10 @@ export default function AllMarathons() {
     );
   }
   return (
+    <>
+    <Helmet>
+        <title>All Marathons | Runner</title>
+    </Helmet>
     <div>
       <div className="flex justify-center items-center gap-4 mb-8">
         <p className="text-2xl font-bold">All Marathons</p>{" "}
@@ -59,5 +64,6 @@ export default function AllMarathons() {
         })}
       </div>
     </div>
+    </>
   );
 }

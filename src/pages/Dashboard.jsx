@@ -2,10 +2,15 @@ import React from "react";
 import { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 export default function Dashboard() {
   const { user, signOutUser } = useContext(AuthContext);
   return (
+    <>
+    <Helmet>
+        <title>Dashboard | Runner</title>
+    </Helmet>
     <div className="lg:grid grid-cols-12 gap-3">
       <div className="col-span-2">
         <ul tabIndex={0} className="space-y-2">
@@ -37,5 +42,6 @@ export default function Dashboard() {
         <Outlet />
       </div>
     </div>
+    </>
   );
 }

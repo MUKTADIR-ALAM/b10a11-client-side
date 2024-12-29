@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { compareAsc } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { use } from "react";
+import { Helmet } from "react-helmet";
 
 export default function AddMarathon() {
   const { user } = useContext(AuthContext);
@@ -65,6 +66,10 @@ export default function AddMarathon() {
     }
   };
   return (
+    <>
+    <Helmet>
+        <title>Add marathon | Runner</title>
+    </Helmet>
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
       <section className=" p-2 md:p-6 mx-auto bg-white rounded-md shadow-md ">
         <h2 className="text-lg font-semibold text-gray-700 capitalize ">
@@ -186,5 +191,6 @@ export default function AddMarathon() {
         </form>
       </section>
     </div>
+    </>
   );
 }

@@ -53,6 +53,7 @@ export default function MyMarathons() {
   };
 
   return (
+
     <div className="flex flex-col justify-center items-center my-8">
       <div className="mb-3 text-2xl font-bold">
         My Marathons({myMarathons?.length})
@@ -95,5 +96,6 @@ export default function MyMarathons() {
         )}
       </div>
     </div>
+    
   );
 }

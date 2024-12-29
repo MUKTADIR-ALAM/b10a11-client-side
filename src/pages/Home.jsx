@@ -5,10 +5,15 @@ import UpcomingMarathons from '../components/UpcomingMarathons'
 import Accordion from '../components/Accordion'
 import Feedback from '../components/Feedback'
 import Sponcer from '../components/Sponcer'
+import {Helmet} from "react-helmet";
+
 
 export default function Home() {
   return (
     <div>
+      <Helmet>
+        <title>Home | Runner</title>
+    </Helmet>
         <Carousel/>
         <HomeMarathon/>
         <Sponcer/>
