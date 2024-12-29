@@ -23,23 +23,7 @@ export default function MyApplications() {
     },
   });
 
-  // forein code
 
-  // const [search, setSearch] = useState("");
-
-  //   const { data, isLoading, isError, refetch } = useQuery(
-  //     {
-  //       queryKey: ["fetchData", search], // Include 'search' as part of the query key
-  //     queryFn: async() => {
-  //       fetchData(search)
-  //     },
-  //     }
-  //   );
-
-  //   const handleSearchChange = (event) => {
-  //     setSearch(event.target.value);
-  //   };
-  // forein code
 
 
 
