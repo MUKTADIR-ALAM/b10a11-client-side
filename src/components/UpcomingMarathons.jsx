@@ -17,7 +17,7 @@ export default function UpcomingMarathons() {
             location: "Banani, Dhaka",
             distance: 5,
             Starts: "10/02/2025",
-            img: "https://images.pexels.com/photos/2402771/pexels-photo-2402771.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            img: "https://images.pexels.com/photos/2402777/pexels-photo-2402777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
             id: 3,
@@ -25,7 +25,7 @@ export default function UpcomingMarathons() {
             location: "Gulshan, Dhaka",
             distance: 10,
             Starts: "15/02/2025",
-            img: "https://images.pexels.com/photos/1181346/pexels-photo-1181346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            img: "https://images.pexels.com/photos/17789702/pexels-photo-17789702/free-photo-of-a-man-running-in-a-marathon-with-headphones-on.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
             id: 4,
@@ -33,7 +33,7 @@ export default function UpcomingMarathons() {
             location: "Dhanmondi, Dhaka",
             distance: 21.1,
             Starts: "20/02/2025",
-            img: "https://images.pexels.com/photos/2788675/pexels-photo-2788675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            img: "https://images.pexels.com/photos/2526885/pexels-photo-2526885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
             id: 5,
@@ -41,7 +41,7 @@ export default function UpcomingMarathons() {
             location: "Mirpur, Dhaka",
             distance: 8,
             Starts: "01/03/2025",
-            img: "https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            img: "https://images.pexels.com/photos/4083914/pexels-photo-4083914.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
             id: 6,
@@ -49,7 +49,7 @@ export default function UpcomingMarathons() {
             location: "Cox's Bazar, Chittagong",
             distance: 15,
             Starts: "05/03/2025",
-            img: "https://images.pexels.com/photos/3621181/pexels-photo-3621181.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            img: "https://images.pexels.com/photos/2421564/pexels-photo-2421564.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
             id: 7,
@@ -57,7 +57,7 @@ export default function UpcomingMarathons() {
             location: "Sylhet, Bangladesh",
             distance: 7,
             Starts: "10/03/2025",
-            img: "https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            img: "https://images.pexels.com/photos/2403052/pexels-photo-2403052.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
         },
         {
             id: 8,
@@ -65,7 +65,7 @@ export default function UpcomingMarathons() {
             location: "Chattogram, Bangladesh",
             distance: 12,
             Starts: "15/03/2025",
-            img: "https://images.pexels.com/photos/3225522/pexels-photo-3225522.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            img: "https://images.pexels.com/photos/29694798/pexels-photo-29694798/free-photo-of-group-of-male-runners-competing-in-foggy-marathon.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
         },
         {
             id: 9,
@@ -73,7 +73,7 @@ export default function UpcomingMarathons() {
             location: "Rajshahi, Bangladesh",
             distance: 18,
             Starts: "20/03/2025",
-            img: "https://images.pexels.com/photos/3222179/pexels-photo-3222179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            img: "https://images.pexels.com/photos/18417689/pexels-photo-18417689/free-photo-of-group-of-runners-at-competition-in-city.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
         },
         {
             id: 10,
@@ -81,7 +81,7 @@ export default function UpcomingMarathons() {
             location: "Dhaka, Bangladesh",
             distance: 50,
             Starts: "01/04/2025",
-            img: "https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            img: "https://images.pexels.com/photos/3019696/pexels-photo-3019696.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
         },
     ];
     function getRandomElements(arr, count) {

@@ -56,17 +56,17 @@ export default function AuthProvider({ children }) {
 
       if (currentUser?.email) {
         const user = { email: currentUser.email };
-        axios.post(`http://localhost:9000/jwt`,user,{withCredentials:true})
+        axios.post(`${import.meta.env.VITE_API_URL}/jwt`,user,{withCredentials:true})
         .then(res=>{
-          console.log('login token',res.data);
+          // console.log('login token',res.data);
           setLoading(false);
         })
       }else{
-        axios.post(`http://localhost:9000/logout`,{},{
+        axios.post(`${import.meta.env.VITE_API_URL}/logout`,{},{
           withCredentials:true
         })
         .then(res=>{
-          console.log('logout',res.data);
+          // console.log('logout',res.data);
           setLoading(false);
         })
       }

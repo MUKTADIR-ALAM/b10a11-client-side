@@ -59,7 +59,7 @@ export default function MyMarathons() {
       </div>
       
       <div>
-        {myMarathons.length ? (
+        {myMarathons?.length ? (
           <div className="overflow-x-auto w-11/12 mx-auto">
             <table className="table">
               {/* head */}
