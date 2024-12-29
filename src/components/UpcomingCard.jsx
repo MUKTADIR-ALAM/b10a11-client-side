@@ -1,5 +1,6 @@
 import React from "react";
-
+import { FaLocationDot } from "react-icons/fa6";
+import { IoIosTime } from "react-icons/io";
 export default function UpcomingCard({marathon}) {
     const { id, title, location, distance, Starts, img } = marathon;
   return (
@@ -12,9 +13,10 @@ export default function UpcomingCard({marathon}) {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <p className="flex items-center">Distance: {distance} km </p>
+        <p className="flex items-center">Starts date: {Starts} <IoIosTime /></p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">{location}</button>
+          <button className="btn btn-primary">{location} <FaLocationDot /></button>
         </div>
       </div>
     </div>

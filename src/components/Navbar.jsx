@@ -29,43 +29,54 @@ export default function Navbar() {
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
         >
           <li>
-            <a>Item 1</a>
+            <NavLink to={"/"}>Home</NavLink>
           </li>
           <li>
-            <a>Parent</a>
-            <ul className="p-2">
-              <li>
-                <a>Submenu 1</a>
-              </li>
-              <li>
-                <a>Submenu 2</a>
-              </li>
-            </ul>
+            <NavLink to={"/allMarathon"}>Marathons</NavLink>
           </li>
-          <li>
-            <a>Item 3</a>
-          </li>
+          {user && (
+            <li>
+              <NavLink to={"/dashboard"}>Dashboard</NavLink>
+            </li>
+          )}
         </ul>
       </div>
       {/* dropdown ends */}
 
       <div className="flex-1">
         <Link to={"/"} className="btn btn-ghost text-xl">
-          RunSphere
+          Runner
         </Link>
       </div>
       <div className="flex-none">
-        <div className="dropdown dropdown-end mr-2 lg:flex hidden">
+        {/* <div className="dropdown dropdown-end mr-2 lg:flex hidden">
           <NavLink to={"/"} className={"btn btn-ghost"}>
             Home
           </NavLink>
           <NavLink to={"/allMarathon"} className={"btn btn-ghost"}>
             Marathons
           </NavLink>
-          <NavLink to={"/allMarathon"} className={"btn btn-ghost"}>
+          <NavLink to={"/dashboard"} className={"btn btn-ghost"}>
             Dashboard
           </NavLink>
+        </div> */}
+
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">
+            <li>
+              <NavLink to={"/"}>Home</NavLink>
+            </li>
+            <li>
+              <NavLink to={"/allMarathon"}>Marathons</NavLink>
+            </li>
+            {user && (
+              <li>
+                <NavLink to={"/dashboard"}>Dashboard</NavLink>
+              </li>
+            )}
+          </ul>
         </div>
+
         {/* user connection */}
         {user ? (
           <div className="dropdown dropdown-end z-10">
@@ -86,7 +97,7 @@ export default function Navbar() {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              <li>
+              {/* <li>
                 <NavLink to={"/addMarathon"} className="justify-between">
                   Add Marathon
                   <span className="badge">New</span>
@@ -99,7 +110,8 @@ export default function Navbar() {
                 <NavLink to={`/applications/${user?.email}`}>
                   My Applications
                 </NavLink>
-              </li>
+              </li> */}
+              <li>{user?.displayName}</li>
               <li>
                 <button onClick={signOutUser}>Logout</button>
               </li>

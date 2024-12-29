@@ -16,7 +16,7 @@ export default function HomeMarathon() {
     return <div className="w-fit m-auto"><span className="loading loading-bars loading-lg"></span></div> 
   }
   return <div>
-    <div className='my-2 mb-4 font-bold text-2xl m-auto w-fit'>Published Marathons Program</div>
+    <div className='my-8 font-bold text-2xl m-auto w-fit'>Published Marathons Program</div>
     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     {
       marathons.map(marathon=>{

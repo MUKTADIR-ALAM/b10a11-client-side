@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import React from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import MyMarathonTd from "../components/MyMarathonTd";
+import Modal from "../components/Modal";
 
 export default function MyMarathons() {
   const { user } = useContext(AuthContext);
@@ -20,6 +21,8 @@ export default function MyMarathons() {
     },
   });
 
+
+  
   
 
   if (isPending) {
@@ -30,6 +33,9 @@ export default function MyMarathons() {
     );
   }
 
+
+
+ 
   const handleDelete = async (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -82,6 +88,7 @@ export default function MyMarathons() {
               })}
             </tbody>
           </table>
+          <Modal />
         </div>
       ) : (
         <p>No Marathons runing</p>

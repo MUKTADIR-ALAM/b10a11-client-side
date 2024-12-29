@@ -45,7 +45,10 @@ export default function Footer() {
             </a>
           </div>
           <div>
-            <p>RunSphere is a marathon organizer <br /> company establised in 2022. <br /> it organize marathon around bangldesh</p>
+            <p>
+              Runner is a marathon organizer <br /> company establised in 2022.{" "}
+              <br /> it organize marathon around bangldesh
+            </p>
           </div>
         </nav>
         <nav>
@@ -75,8 +78,7 @@ export default function Footer() {
       </footer>
       <aside className="bg-base-300 text-base-content p-4 text-center font-bold">
         <p>
-          Copyright © {new Date().getFullYear()} - All right reserved by
-          RunSphere
+          Copyright © {new Date().getFullYear()} - All right reserved by Runner
         </p>
       </aside>
     </div>

@@ -95,8 +95,8 @@ export default function UpcomingMarathons() {
     // console.log(randomMarathons);
   return (
     <div className="mt-8">
-      <div className="my-2 mb-4 font-bold text-2xl m-auto w-fit">
-        upcoming Marathons Program
+      <div className="mb-8 mt-12 font-bold text-2xl m-auto w-fit">
+        Upcoming Marathons Programs
       </div>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {

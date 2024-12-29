@@ -5,6 +5,8 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { RxUpdate } from "react-icons/rx";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
+import MyApplyTd from "../components/MyApplyTd";
+import ApplyUpdateModal from "../components/ApplyUpdateModal";
 
 export default function MyApplications() {
   const { email } = useParams();
@@ -18,6 +20,41 @@ export default function MyApplications() {
     },
   });
   
+// forein code
+
+
+// const [search, setSearch] = useState("");
+
+//   const { data, isLoading, isError, refetch } = useQuery(
+//     {
+//       queryKey: ["fetchData", search], // Include 'search' as part of the query key
+//     queryFn: async() => {
+//       fetchData(search)
+//     },
+//     }
+//   );
+
+//   const handleSearchChange = (event) => {
+//     setSearch(event.target.value);
+//   };
+// forein code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const handleDelete = async(id) => {
       Swal.fire({
         title: "Are you sure?",
@@ -61,8 +98,11 @@ export default function MyApplications() {
   }
   return (
     <div className="flex flex-col justify-center items-center my-8">
+      <div>
       <div className="mb-3 text-2xl font-bold">
         My Applications({myApplications?.length})
+      </div>
+      <div>  </div>
       </div>
       {myApplications.length ? (
         <div className="overflow-x-auto w-11/12 mx-auto">
@@ -82,31 +122,12 @@ export default function MyApplications() {
               {/* row 1 */}
               {myApplications.map((myApplication, idx) => {
                 return (
-                  <tr key={myApplication._id}>
-                    <th>{idx + 1}</th>
-                    <td>{myApplication.marathon_title}</td>
-                    <td>{myApplication.start_date}</td>
-                    <td>{myApplication.weight} kg</td>
-                    <td>{myApplication.height} cm</td>
-                    <td className="space-x-2 space-y-1 flex justify-center items-center">
-                      <Link
-                        to={`/UpdateApplication/${myApplication._id}`}
-                        className="btn"
-                      >
-                        <RxUpdate />
-                      </Link>
-                      <button
-                        onClick={() => handleDelete(myApplication._id)}
-                        className="btn"
-                      >
-                        <MdDeleteForever />
-                      </button>
-                    </td>
-                  </tr>
+                  <MyApplyTd key={idx} myApplication={myApplication} idx={idx} handleDelete={handleDelete}/>
                 );
               })}
             </tbody>
           </table>
+          <ApplyUpdateModal/>
         </div>
       ) : (
         <p>you did not apply any marathon</p>

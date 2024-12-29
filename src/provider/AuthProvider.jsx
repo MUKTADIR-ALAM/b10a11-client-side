@@ -17,6 +17,9 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const [modalId, setModalId] = useState();
+  const [applyModalId,setApplyModalId] =useState();
+
   const provider = new GoogleAuthProvider();
 
   const createUserWithemailPass = (email, password) => {
@@ -62,6 +65,10 @@ export default function AuthProvider({ children }) {
     signInWithGoogle,
     forgetPass,
     loading,
+    modalId,
+    setModalId,
+    applyModalId,
+    setApplyModalId
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

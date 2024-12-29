@@ -1,22 +1,27 @@
-import { useQuery } from "@tanstack/react-query";
-import React, { useContext, useState } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import React, { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import DatePicker from "react-datepicker";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { compareAsc } from "date-fns";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 export default function UpdateMarathon() {
+  const queryClient = useQueryClient();
+  const {modalId:id} = useContext(AuthContext);
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
-  const { id } = useParams();
-
+  // const { id } = useParams();
+  const navigate = useNavigate();
   const { isPending, data: marathon } = useQuery({
     queryKey: [`marathon${id}`],
     queryFn: async () => {
       const res = await axiosSecure.get(`marathon/${id}`);
       return res.data;
     },
+    enabled:!!id
   });
 
   const {
@@ -34,11 +39,22 @@ export default function UpdateMarathon() {
     registrationCount,
   } = marathon || {};
 
+
   const [start_registration_u, setStart_registration] =
     useState(start_registration);
   const [end_registration_u, setEnd_registration] = useState(end_registration);
   const [marathon_start_u, setMarathon_start] = useState(marathon_start);
   const [created_time_u, setCreated_time] = useState(new Date());
+
+
+
+  useEffect(() => {
+    if (marathon) {
+      setStart_registration(new Date(marathon.start_registration));
+      setEnd_registration(new Date(marathon.end_registration));
+      setMarathon_start(new Date(marathon.marathon_start));
+    }
+  }, [marathon]);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -75,13 +91,15 @@ export default function UpdateMarathon() {
     // };
 
     // fdata.registrationCount = 0;
-
+    
     try {
       const { data } = await axiosSecure.patch(`/updateMarathon/${id}`, fdata);
-      console.log(data);
+      Swal.fire("updated successfully!");
+      queryClient.invalidateQueries(['marathons']);
     } catch (err) {
       console.log(err);
     }
+    document.getElementById(`my_modal_${1}`).close()
   };
 
   if (isPending) {

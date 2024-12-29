@@ -3,48 +3,52 @@ import { useContext } from "react";
 import DatePicker from "react-datepicker";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 export default function ApplicationUpdate() {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const queryClient = useQueryClient();
+  const { user, applyModalId: id } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
-  const { id } = useParams();
-  // console.log(id);
+  // const { id } = useParams();
+
   const { data: application } = useQuery({
     queryKey: [`application${id}`],
     queryFn: async () => {
       const res = await axiosSecure.get(`/my-application/${id}`);
       return res.data;
     },
+    enabled: !!id,
   });
   const {
-    _id, 
-    first_name, 
-    last_name, 
-    contact_number, 
-    weight, 
-    height, 
-    applicant_email, 
-    marathon_title, 
-    start_date, 
-    marathon_id 
+    _id,
+    first_name,
+    last_name,
+    contact_number,
+    weight,
+    height,
+    applicant_email,
+    marathon_title,
+    start_date,
+    marathon_id,
   } = application || {};
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const fdata = Object.fromEntries(formData.entries());
     console.log(fdata);
-    try{
-      const {data} = await axiosSecure.patch(`/my-application/${_id}`,fdata);
-      toast.success('updated successfully');
-      navigate(`/applications/${user?.email}`)
-    }catch(err){
+    try {
+      const { data } = await axiosSecure.patch(`/my-application/${_id}`, fdata);
+      Swal.fire("updated successfully!");
+      queryClient.invalidateQueries(["myApplications"]);
+    } catch (err) {
       console.log(err);
     }
+    document.getElementById(`my_apply_modal_${1}`).close();
   };
 
   return (

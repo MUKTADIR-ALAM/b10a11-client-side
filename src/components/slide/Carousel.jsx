@@ -31,19 +31,19 @@ export default function Carousel() {
         <SwiperSlide>
           <Slide
             image={'https://images.pexels.com/photos/1571939/pexels-photo-1571939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
-            text='Get Your Web Development Projects Done in minutes'
+            text='Where every step counts, and every event is just a click away.'
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
             image={'https://images.pexels.com/photos/2002209/pexels-photo-2002209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
-            text='Get Your Graphics Design Projects Done in minutes'
+            text='Run the distance, manage the event, and connect the community—your marathon journey'
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
             image={'https://images.pexels.com/photos/2654902/pexels-photo-2654902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
-            text='Start Your Digital Marketing Campaigns up n running'
+            text='Empowering marathon organizers and participants to go the extra mile with ease.'
           />
         </SwiperSlide>
       </Swiper>

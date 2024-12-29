@@ -1,10 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { AuthContext } from "../provider/AuthProvider";
+import { compareAsc } from "date-fns";
+import toast from "react-hot-toast";
+import UrgeWithPleasureComponent from "../components/UrgeWithPleasureComponent";
 
 export default function MarathonDetails() {
+  const navigate = useNavigate();
   const {user} = useContext(AuthContext)
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
@@ -30,8 +34,18 @@ export default function MarathonDetails() {
     registrationCount,
   } = marathon || {};
 
-  
+  const register = () =>{
+    if(compareAsc(end_registration,new Date())===-1){
+      return toast.error(`Registration process end`)
+    }
+    if(compareAsc(start_registration,new Date())===1){
+      return toast.error(`Registration will start on ${start_registration}`)
+    }
 
+
+    navigate(`/registration/${id}`);
+  }
+  // console.log()
   
   if (isPending) {
     return (
@@ -42,6 +56,11 @@ export default function MarathonDetails() {
   }
   return (
     <div className="py-8">
+
+<div className="w-fit mx-auto mb-4">
+ Marathon will start after <UrgeWithPleasureComponent marathon_start={marathon_start}  />
+</div>
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row -mx-4">
           {/* Image Section */}
@@ -132,7 +151,8 @@ export default function MarathonDetails() {
                 {description}
               </p>
             </div>
-            <div className="mt-4"><Link className="btn w-full bg-primary btn-primary" to={`/registration/${id}`}>Register</Link></div>
+            <div className="mt-4"><Link onClick={register} className="btn w-full bg-primary btn-primary">Register</Link></div>
+            
           </div>
         </div>
         {/* form */}
