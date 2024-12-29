@@ -14,11 +14,13 @@ import Registration from "../pages/Registration";
 import Dashboard from "../pages/Dashboard";
 import DashboardContent from "../pages/DashboardContent";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/ErrorPage";
 
 export const Routes = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
