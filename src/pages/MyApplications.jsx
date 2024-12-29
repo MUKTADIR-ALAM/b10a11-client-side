@@ -12,11 +12,13 @@ export default function MyApplications() {
   const { email } = useParams();
   const queryClient = useQueryClient();
   const axiosSecure = useAxiosSecure();
+
   const [search,setSearch] = useState('');
+
   const { isPending, data: myApplications } = useQuery({
-    queryKey: ["myApplications"],
+    queryKey: ["myApplications",search],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/my-applications/${email}`);
+      const res = await axiosSecure.get(`/my-applications/${email}?search=${search}`);
       return res.data;
     },
   });
@@ -82,6 +84,7 @@ export default function MyApplications() {
       </div>
     );
   }
+
   return (
     <div className="flex flex-col justify-center items-center my-8">
       <div>
@@ -89,7 +92,6 @@ export default function MyApplications() {
           My Applications({myApplications?.length})
         </div>
         <div className="my-4">
-          <form>
             <div className="flex p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
               <input
                 className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
@@ -97,15 +99,14 @@ export default function MyApplications() {
                 name="search"
                 placeholder="Enter Job Title"
                 aria-label="Enter Job Title"
-                value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                value={search}
               />
 
               <button className="px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">
                 Search
               </button>
             </div>
-          </form>
         </div>
       </div>
       {myApplications.length ? (
