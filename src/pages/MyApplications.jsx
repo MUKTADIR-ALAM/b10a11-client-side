@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Link, useParams } from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -12,6 +12,7 @@ export default function MyApplications() {
   const { email } = useParams();
   const queryClient = useQueryClient();
   const axiosSecure = useAxiosSecure();
+  const [search,setSearch] = useState('');
   const { isPending, data: myApplications } = useQuery({
     queryKey: ["myApplications"],
     queryFn: async () => {
@@ -19,75 +20,60 @@ export default function MyApplications() {
       return res.data;
     },
   });
-  
-// forein code
 
+  // forein code
 
-// const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
 
-//   const { data, isLoading, isError, refetch } = useQuery(
-//     {
-//       queryKey: ["fetchData", search], // Include 'search' as part of the query key
-//     queryFn: async() => {
-//       fetchData(search)
-//     },
-//     }
-//   );
+  //   const { data, isLoading, isError, refetch } = useQuery(
+  //     {
+  //       queryKey: ["fetchData", search], // Include 'search' as part of the query key
+  //     queryFn: async() => {
+  //       fetchData(search)
+  //     },
+  //     }
+  //   );
 
-//   const handleSearchChange = (event) => {
-//     setSearch(event.target.value);
-//   };
-// forein code
-
-
+  //   const handleSearchChange = (event) => {
+  //     setSearch(event.target.value);
+  //   };
+  // forein code
 
 
 
 
+  const handleDelete = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
 
+        // fetch(`https://crowdcube-server-nine.vercel.app/campaigns/${id}`, {
+        //   method: "DELETE",
+        // })
+        //   .then((res) => res.json())
+        //   .then((result) => {
+        //     console.log(result)
+        //   });
+        // const remaining = campaigns.filter((camp) => camp._id != id);
+        // setCampaigns(remaining);
 
-
-
-
-
-
-
-
-
-
-  const handleDelete = async(id) => {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success",
-          });
-  
-          // fetch(`https://crowdcube-server-nine.vercel.app/campaigns/${id}`, {
-          //   method: "DELETE",
-          // })
-          //   .then((res) => res.json())
-          //   .then((result) => {
-          //     console.log(result)
-          //   });
-          // const remaining = campaigns.filter((camp) => camp._id != id);
-          // setCampaigns(remaining);
-  
-          const result = await axiosSecure.delete(`/my-application/${id}`);
-          queryClient.invalidateQueries({ queryKey: ['myApplications'] });
-  
-        }
-      });
-    };
+        const result = await axiosSecure.delete(`/my-application/${id}`);
+        queryClient.invalidateQueries({ queryKey: ["myApplications"] });
+      }
+    });
+  };
 
   if (isPending) {
     return (
@@ -99,10 +85,28 @@ export default function MyApplications() {
   return (
     <div className="flex flex-col justify-center items-center my-8">
       <div>
-      <div className="mb-3 text-2xl font-bold">
-        My Applications({myApplications?.length})
-      </div>
-      <div>  </div>
+        <div className="mb-3 text-2xl font-bold">
+          My Applications({myApplications?.length})
+        </div>
+        <div className="my-4">
+          <form>
+            <div className="flex p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
+              <input
+                className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
+                type="text"
+                name="search"
+                placeholder="Enter Job Title"
+                aria-label="Enter Job Title"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+
+              <button className="px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
       {myApplications.length ? (
         <div className="overflow-x-auto w-11/12 mx-auto">
@@ -122,12 +126,17 @@ export default function MyApplications() {
               {/* row 1 */}
               {myApplications.map((myApplication, idx) => {
                 return (
-                  <MyApplyTd key={idx} myApplication={myApplication} idx={idx} handleDelete={handleDelete}/>
+                  <MyApplyTd
+                    key={idx}
+                    myApplication={myApplication}
+                    idx={idx}
+                    handleDelete={handleDelete}
+                  />
                 );
               })}
             </tbody>
           </table>
-          <ApplyUpdateModal/>
+          <ApplyUpdateModal />
         </div>
       ) : (
         <p>you did not apply any marathon</p>

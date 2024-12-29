@@ -21,10 +21,6 @@ export default function MyMarathons() {
     },
   });
 
-
-  
-  
-
   if (isPending) {
     return (
       <div className="w-fit m-auto">
@@ -33,9 +29,6 @@ export default function MyMarathons() {
     );
   }
 
-
-
- 
   const handleDelete = async (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -64,35 +57,43 @@ export default function MyMarathons() {
       <div className="mb-3 text-2xl font-bold">
         My Marathons({myMarathons?.length})
       </div>
-      {myMarathons.length ? (
-        <div className="overflow-x-auto w-11/12 mx-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>Serial</th>
-                <th>Title</th>
-                <th>Location</th>
-                <th>Distance</th>
-                <th>start</th>
-                <th>End</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* row 1 */}
-              {myMarathons.map((marathon,idx) => {
-                return (
-                  <MyMarathonTd key={idx} marathon={marathon} handleDelete={handleDelete} idx={idx}/>
-                );
-              })}
-            </tbody>
-          </table>
-          <Modal />
-        </div>
-      ) : (
-        <p>No Marathons runing</p>
-      )}
+      
+      <div>
+        {myMarathons.length ? (
+          <div className="overflow-x-auto w-11/12 mx-auto">
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th>Serial</th>
+                  <th>Title</th>
+                  <th>Location</th>
+                  <th>Distance</th>
+                  <th>start</th>
+                  <th>End</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* row 1 */}
+                {myMarathons.map((marathon, idx) => {
+                  return (
+                    <MyMarathonTd
+                      key={idx}
+                      marathon={marathon}
+                      handleDelete={handleDelete}
+                      idx={idx}
+                    />
+                  );
+                })}
+              </tbody>
+            </table>
+            <Modal />
+          </div>
+        ) : (
+          <p>No Marathons runing</p>
+        )}
+      </div>
     </div>
   );
 }
