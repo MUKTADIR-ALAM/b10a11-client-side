@@ -32,7 +32,6 @@ export default function AddMarathon() {
     const start_end = compareAsc(start_registration, end_registration);
     const end_play = compareAsc(end_registration,marathon_start);
 
-    console.log(start_end)
     if(start_end===1){
       toast.error('end registration date must be heigher than start')
       return;
@@ -62,7 +61,7 @@ export default function AddMarathon() {
       toast.success('successfully marathon added');
       navigate(`/dashboard/marathons/${user?.email}`)
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
   return (

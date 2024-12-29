@@ -34,7 +34,7 @@ export default function AllMarathons() {
       (a, b) => new Date(a.marathon_start) - new Date(b.marathon_start)
     );
     setMarathons([...sorted]);
-    console.log(sorted);
+    // console.log(sorted);
   };
   if (loading) {
     return (

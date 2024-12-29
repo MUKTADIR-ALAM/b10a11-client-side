@@ -40,13 +40,13 @@ export default function ApplicationUpdate() {
     e.preventDefault();
     const formData = new FormData(e.target);
     const fdata = Object.fromEntries(formData.entries());
-    console.log(fdata);
+    // console.log(fdata);
     try {
       const { data } = await axiosSecure.patch(`/my-application/${_id}`, fdata);
       Swal.fire("updated successfully!");
       queryClient.invalidateQueries(["myApplications"]);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
     document.getElementById(`my_apply_modal_${1}`).close();
   };

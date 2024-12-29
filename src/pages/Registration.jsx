@@ -40,7 +40,7 @@ export default function Registration() {
     const formData = new FormData(e.target);
     const fdata = Object.fromEntries(formData.entries());
     fdata.marathon_id = _id;
-    console.log(fdata);
+    // console.log(fdata);
     const phoneRegex = /^(?:\+?88)?01[3-9]\d{8}$/;
     if(!phoneRegex.test(fdata.contact_number)){
       return toast.error('enter a valid bangladeshi phone number');

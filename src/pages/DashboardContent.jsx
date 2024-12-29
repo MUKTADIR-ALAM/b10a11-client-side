@@ -3,7 +3,7 @@ import { AuthContext } from "../provider/AuthProvider";
 
 export default function DashboardContent() {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   return (
     <div className="">
       <div className="text-center text-2xl font-bold">

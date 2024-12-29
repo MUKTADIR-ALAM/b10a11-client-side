@@ -97,7 +97,7 @@ export default function UpdateMarathon() {
       Swal.fire("updated successfully!");
       queryClient.invalidateQueries(['marathons']);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
     document.getElementById(`my_modal_${1}`).close()
   };
