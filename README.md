@@ -1,8 +1,8 @@
 
-# Crowdcube: A Crowd Funding Application
+# Runner: A marathon program based web app
 
 # About
-This crowdfunding platform enables users to raise money for personal needs, creative projects, or startups. With a user-friendly design, secure authentication, and features like campaign creation, donation tracking, and real-time updates, it connects people with contributors to bring ideas to life.
+Our Marathon Management System is an all-in-one platform designed to simplify the organization and participation in marathon events. Whether you're an event organizer or a participant, the website offers seamless tools to create, manage, and register for marathons. With features like personalized dashboards, real-time updates, and secure user authentication, the platform ensures a smooth and engaging experience. Join us to connect with the marathon community and make every step of your journey count!
 
 ## 🔗 Live Links
 
