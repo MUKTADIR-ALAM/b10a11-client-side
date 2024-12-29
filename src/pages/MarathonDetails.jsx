@@ -57,8 +57,8 @@ export default function MarathonDetails() {
   return (
     <div className="py-8">
 
-<div className="w-fit mx-auto mb-4">
- Marathon will start after <UrgeWithPleasureComponent marathon_start={marathon_start}  />
+<div className="w-fit mx-auto mb-4 flex flex-col justify-center items-center">
+ <p className="text-xl font-bold mb-2">Marathon will start after</p> <div><UrgeWithPleasureComponent marathon_start={marathon_start}  /></div>
 </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
