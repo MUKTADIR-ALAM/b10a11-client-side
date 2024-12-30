@@ -36,7 +36,7 @@ export default function MarathonDetails() {
 
   const register = () =>{
     if(compareAsc(end_registration,new Date())===-1){
-      return toast.error(`you have to register before registration date`);
+      return toast.error(`you have to register before end registration date`);
     }
     if(compareAsc(start_registration,new Date())===1){
       return toast.error(`Registration will start on ${start_registration}`)
