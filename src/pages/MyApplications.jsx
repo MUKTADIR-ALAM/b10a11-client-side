@@ -43,15 +43,7 @@ export default function MyApplications() {
           icon: "success",
         });
 
-        // fetch(`https://crowdcube-server-nine.vercel.app/campaigns/${id}`, {
-        //   method: "DELETE",
-        // })
-        //   .then((res) => res.json())
-        //   .then((result) => {
-        //     console.log(result)
-        //   });
-        // const remaining = campaigns.filter((camp) => camp._id != id);
-        // setCampaigns(remaining);
+
 
         const result = await axiosSecure.delete(`/my-application/${id}`);
         queryClient.invalidateQueries({ queryKey: ["myApplications"] });
@@ -59,13 +51,7 @@ export default function MyApplications() {
     });
   };
 
-  // if (isPending) {
-  //   return (
-  //     <div className="w-fit m-auto">
-  //       <span className="loading loading-bars loading-lg"></span>
-  //     </div>
-  //   );
-  // }
+
 
   return (
     <>
