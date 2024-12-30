@@ -19,9 +19,9 @@ export default function HomeMarathon() {
     <div className='my-8 font-bold text-2xl m-auto w-fit'>Published Marathons Program</div>
     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     {
-      marathons.map(marathon=>{
+      marathons? marathons?.map(marathon=>{
         return <MarathonCard key={marathon._id} marathon={marathon}/>
-      })
+      }):<div className='text-xl text-center font-bold w-fit mx-auto'>No Marathons running</div>
     }
   </div>
   </div>;

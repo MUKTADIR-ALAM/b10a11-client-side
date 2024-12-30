@@ -7,6 +7,7 @@ import React from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import MyMarathonTd from "../components/MyMarathonTd";
 import Modal from "../components/Modal";
+import { Helmet } from "react-helmet";
 
 export default function MyMarathons() {
   const { user } = useContext(AuthContext);
@@ -53,49 +54,52 @@ export default function MyMarathons() {
   };
 
   return (
+    <>
+    <Helmet>
+        <title>My marathon | Runner</title>
+    </Helmet>
+      <div className="flex flex-col justify-center items-center my-8">
+        <div className="mb-3 text-2xl font-bold">
+          My Marathons({myMarathons?.length})
+        </div>
 
-    <div className="flex flex-col justify-center items-center my-8">
-      <div className="mb-3 text-2xl font-bold">
-        My Marathons({myMarathons?.length})
+        <div>
+          {myMarathons?.length ? (
+            <div className="overflow-x-auto w-11/12 mx-auto">
+              <table className="table">
+                {/* head */}
+                <thead>
+                  <tr>
+                    <th>Serial</th>
+                    <th>Title</th>
+                    <th>Location</th>
+                    <th>Distance</th>
+                    <th>start</th>
+                    <th>End</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* row 1 */}
+                  {myMarathons.map((marathon, idx) => {
+                    return (
+                      <MyMarathonTd
+                        key={idx}
+                        marathon={marathon}
+                        handleDelete={handleDelete}
+                        idx={idx}
+                      />
+                    );
+                  })}
+                </tbody>
+              </table>
+              <Modal />
+            </div>
+          ) : (
+            <p>No Marathons runing</p>
+          )}
+        </div>
       </div>
-      
-      <div>
-        {myMarathons?.length ? (
-          <div className="overflow-x-auto w-11/12 mx-auto">
-            <table className="table">
-              {/* head */}
-              <thead>
-                <tr>
-                  <th>Serial</th>
-                  <th>Title</th>
-                  <th>Location</th>
-                  <th>Distance</th>
-                  <th>start</th>
-                  <th>End</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* row 1 */}
-                {myMarathons.map((marathon, idx) => {
-                  return (
-                    <MyMarathonTd
-                      key={idx}
-                      marathon={marathon}
-                      handleDelete={handleDelete}
-                      idx={idx}
-                    />
-                  );
-                })}
-              </tbody>
-            </table>
-            <Modal />
-          </div>
-        ) : (
-          <p>No Marathons runing</p>
-        )}
-      </div>
-    </div>
-    
+    </>
   );
 }

@@ -7,6 +7,7 @@ import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
 import MyApplyTd from "../components/MyApplyTd";
 import ApplyUpdateModal from "../components/ApplyUpdateModal";
+import { Helmet } from "react-helmet";
 
 export default function MyApplications() {
   const { email } = useParams();
@@ -70,6 +71,10 @@ export default function MyApplications() {
   // }
 
   return (
+    <>
+    <Helmet>
+        <title>My Apply | Runner</title>
+    </Helmet>
     <div className="flex flex-col justify-center items-center my-8">
       <div>
         <div className="mb-3 text-2xl font-bold">
@@ -131,5 +136,6 @@ export default function MyApplications() {
       )
       }
     </div>
+    </>
   );
 }

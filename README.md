@@ -26,6 +26,10 @@ Our Marathon Management System is an all-in-one platform designed to simplify th
 
 
 
+ - **Personalized Dashboard:** All users have theit own personal dashboard for create and join marathon
+
+
+
 
 
 

@@ -4,6 +4,8 @@ import { AuthContext } from "../provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import toast from "react-hot-toast";
+import {Helmet} from "react-helmet";
+
 
 export default function Login() {
   const { logInUser, signInWithGoogle } = useContext(AuthContext);
@@ -43,6 +45,10 @@ export default function Login() {
   };
 
   return (
+    <>
+    <Helmet>
+        <title>Login | Runner</title>
+    </Helmet>
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-8 p-2">
       <h2 className="text-2xl font-semibold text-center">Login your account</h2>
       <form onSubmit={handleLoginSubmit} className="card-body">
@@ -104,5 +110,6 @@ export default function Login() {
         </Link>
       </p>
     </div>
+    </>
   );
 }

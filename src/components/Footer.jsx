@@ -72,7 +72,7 @@ export default function Footer() {
             State/province/area: Dhaka <br />
             Zip code: 1000 Country: Bangladesh
           </a>
-          <a className="link link-hover">Mail: crowdcube@mail.com</a>
+          <a className="link link-hover">Mail: runner@mail.com</a>
           <a className="link link-hover">Phone: 0170000000</a>
         </nav>
       </footer>
