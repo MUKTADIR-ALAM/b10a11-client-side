@@ -32,7 +32,7 @@ export default function AllMarathons() {
 
   const handleSort = () => {
     const sorted = marathons.sort(
-      (a, b) => new Date(a.marathon_start) - new Date(b.marathon_start)
+      (a, b) => new Date(b.marathon_start) - new Date(a.marathon_start)
     );
     setMarathons([...sorted]);
     // console.log(sorted);
@@ -50,11 +50,11 @@ export default function AllMarathons() {
         <title>All Marathons | Runner</title>
     </Helmet>
     <div>
-      <div className="flex justify-center items-center gap-4 mb-8">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-4 mb-8">
         <p className="text-2xl font-bold">All Marathons</p>{" "}
         <div>
           <button className="btn" onClick={handleSort}>
-            sort (asc)
+            Sort by marathon start date
           </button>
         </div>
       </div>
