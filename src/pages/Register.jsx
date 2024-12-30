@@ -44,6 +44,14 @@ export default function Register() {
       toast.error("chose strong password");
       return;
     }
+
+    const urlPattern =
+      /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+    if (!urlPattern.test(photoUrl)) {
+      toast.error("Invalid img url");
+      return;
+    }
+
     createUserWithemailPass(email, password)
       .then((res) => {
         setUser(res.user);
