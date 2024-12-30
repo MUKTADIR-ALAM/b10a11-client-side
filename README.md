@@ -7,7 +7,7 @@ Our Marathon Management System is an all-in-one platform designed to simplify th
 ## 🔗 Live Links
 
 - website link: https://kicksy0101.web.app/
-- backend link: https://crowdcube-server-nine.vercel.app/
+- backend link: https://runspehere-server.vercel.app/
 - pdf link: https://docs.google.com/document/d/1JRAkXHi9f4NbdJRv1lnylznZFdqpUX_zTR_geIOph_0/edit?tab=t.0
 
 ## key features
@@ -26,7 +26,7 @@ Our Marathon Management System is an all-in-one platform designed to simplify th
 
 
 
- - **Personalized Dashboard:** All users have theit own personal dashboard for create and join marathon
+ - **Personalized Dashboard:** All users have their own personal dashboard for create and join marathon
 
 
 
