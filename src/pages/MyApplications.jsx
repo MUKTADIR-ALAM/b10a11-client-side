@@ -14,20 +14,17 @@ export default function MyApplications() {
   const queryClient = useQueryClient();
   const axiosSecure = useAxiosSecure();
 
-  const [search,setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   const { isPending, data: myApplications } = useQuery({
-    queryKey: ["myApplications",search],
+    queryKey: ["myApplications", search],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/my-applications/${email}?search=${search}`);
+      const res = await axiosSecure.get(
+        `/my-applications/${email}?search=${search}`
+      );
       return res.data;
     },
   });
-
-
-
-
-
 
   const handleDelete = async (id) => {
     Swal.fire({
@@ -72,15 +69,15 @@ export default function MyApplications() {
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>My Apply | Runner</title>
-    </Helmet>
-    <div className="flex flex-col justify-center items-center my-8">
-      <div>
-        <div className="mb-3 text-2xl font-bold">
-          My Applications({myApplications?.length})
-        </div>
-        <div className="my-4">
+      </Helmet>
+      <div className="flex flex-col justify-center items-center my-8">
+        <div>
+          <div className="mb-3 text-2xl font-bold">
+            My Applications({myApplications?.length})
+          </div>
+          <div className="my-4">
             <div className="flex p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
               <input
                 className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
@@ -96,46 +93,46 @@ export default function MyApplications() {
                 Search
               </button>
             </div>
+          </div>
         </div>
+        {isPending ? (
+          <div className="w-fit m-auto">
+            <span className="loading loading-bars loading-lg"></span>
+          </div>
+        ) : myApplications.length ? (
+          <div className="overflow-x-auto w-11/12 mx-auto">
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th>Serial</th>
+                  <th>Title</th>
+                  <th>start date</th>
+                  <th>height</th>
+                  <th>weight</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* row 1 */}
+                {myApplications.map((myApplication, idx) => {
+                  return (
+                    <MyApplyTd
+                      key={idx}
+                      myApplication={myApplication}
+                      idx={idx}
+                      handleDelete={handleDelete}
+                    />
+                  );
+                })}
+              </tbody>
+            </table>
+            <ApplyUpdateModal />
+          </div>
+        ) : (
+          <p>you did not apply any marathon</p>
+        )}
       </div>
-      {
-        isPending? <div className="w-fit m-auto">
-        <span className="loading loading-bars loading-lg"></span>
-      </div>:myApplications.length ? (
-        <div className="overflow-x-auto w-11/12 mx-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>Serial</th>
-                <th>Title</th>
-                <th>start date</th>
-                <th>height</th>
-                <th>weight</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* row 1 */}
-              {myApplications.map((myApplication, idx) => {
-                return (
-                  <MyApplyTd
-                    key={idx}
-                    myApplication={myApplication}
-                    idx={idx}
-                    handleDelete={handleDelete}
-                  />
-                );
-              })}
-            </tbody>
-          </table>
-          <ApplyUpdateModal />
-        </div>
-      ) : (
-        <p>you did not apply any marathon</p>
-      )
-      }
-    </div>
     </>
   );
 }

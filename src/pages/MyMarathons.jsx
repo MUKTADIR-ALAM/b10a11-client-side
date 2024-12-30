@@ -63,7 +63,7 @@ export default function MyMarathons() {
           My Marathons({myMarathons?.length})
         </div>
 
-        <div>
+        
           {myMarathons?.length ? (
             <div className="overflow-x-auto w-11/12 mx-auto">
               <table className="table">
@@ -98,7 +98,7 @@ export default function MyMarathons() {
           ) : (
             <p>No Marathons runing</p>
           )}
-        </div>
+        
       </div>
     </>
   );

@@ -38,7 +38,7 @@ export default function Dashboard() {
           </li>
         </ul>
       </div>
-      <div className=" col-span-10 ">
+      <div className=" col-span-10">
         <Outlet />
       </div>
     </div>
