@@ -68,17 +68,6 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="flex-none">
-        {/* <div className="dropdown dropdown-end mr-2 lg:flex hidden">
-          <NavLink to={"/"} className={"btn btn-ghost"}>
-            Home
-          </NavLink>
-          <NavLink to={"/allMarathon"} className={"btn btn-ghost"}>
-            Marathons
-          </NavLink>
-          <NavLink to={"/dashboard"} className={"btn btn-ghost"}>
-            Dashboard
-          </NavLink>
-        </div> */}
 
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
