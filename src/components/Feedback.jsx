@@ -54,60 +54,53 @@ export default function Feedback() {
         </div>
 
         {/* Feedback Form */}
-        <form onSubmit={handleFeedbackSubmit}>
-          <div className=" bg-white flex flex-col md:ml-auto w-full mt-8 md:mt-0">
-            <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
-              Feedback
-            </h2>
-            <p className="leading-relaxed mb-5 text-gray-600">
-              write how you fell about our Marathons
-            </p>
-            <div className="relative mb-4">
-              <label htmlFor="name" className="leading-7 text-sm text-gray-600">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              />
-            </div>
-            <div className="relative mb-4">
-              <label
-                htmlFor="email"
-                className="leading-7 text-sm text-gray-600"
+        <form className="space-y-6 bg-white p-6 mt-3 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-gray-700 mb-2">Full Name</label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div>
+                  <label className="block text-gray-700 mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="john@example.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-gray-700 mb-2">Subject</label>
+                <input
+                  type="text"
+                  className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="How can we help?"
+                />
+              </div>
+
+              <div>
+                <label className="block text-gray-700 mb-2">Message</label>
+                <textarea
+                  rows="5"
+                  className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Write your message here..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-primary transition-colors font-semibold"
               >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              />
-            </div>
-            <div className="relative mb-4">
-              <label
-                htmlFor="message"
-                className="leading-7 text-sm text-gray-600"
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-              ></textarea>
-            </div>
-            <button className="text-white bg-primary border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
-              Button
-            </button>
-          </div>
-        </form>
+                Send Message
+              </button>
+            </form>
       </div>
     </section>
   );

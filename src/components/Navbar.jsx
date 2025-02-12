@@ -17,7 +17,6 @@ export default function Navbar() {
     else setLightMode();
   };
 
-
   return (
     <div className="navbar bg-base-100 sticky top-0 z-50 p-4 px-8">
       {/* dropdown start */}
@@ -105,25 +104,26 @@ export default function Navbar() {
 
         {/* user connection */}
         {user ? (
-          <div className="dropdown dropdown-end z-10">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  referrerPolicy="no-referrer"
-                  src={user?.photoURL}
-                />
+          <div className="flex justify-center items-center">
+            <div className="dropdown dropdown-end z-10">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    referrerPolicy="no-referrer"
+                    src={user?.photoURL}
+                  />
+                </div>
               </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              {/* <li>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                {/* <li>
                 <NavLink to={"/addMarathon"} className="justify-between">
                   Add Marathon
                   <span className="badge">New</span>
@@ -137,15 +137,20 @@ export default function Navbar() {
                   My Applications
                 </NavLink>
               </li> */}
-              <li>{user?.displayName}</li>
-              <li>
-                <button onClick={signOutUser}>Logout</button>
-              </li>
-            </ul>
-            <input onClick={toggleTheme} type="checkbox" className="toggle" />
+                <li>{user?.displayName}</li>
+                <li>
+                  <button onClick={signOutUser}>Logout</button>
+                </li>
+              </ul>
+            </div>
+            <input
+              onClick={toggleTheme}
+              type="checkbox"
+              className="toggle ml-2"
+            />
           </div>
         ) : (
-          <div className="space-x-1">
+          <div className="space-x-1 flex justify-center items-center">
             <Link to={"/login"} className="btn">
               Login
             </Link>

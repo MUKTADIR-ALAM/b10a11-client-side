@@ -75,7 +75,7 @@ export default function MarathonDetails() {
           </div>
           {/* Product Info Section */}
           <div className="md:flex-1 px-4">
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            <h2 className="text-2xl font-bold  mb-2">
               Title : {marathon_title}
             </h2>
             {/* <p className="text-gray-600 text-sm mb-4">
@@ -83,44 +83,44 @@ export default function MarathonDetails() {
             </p> */}
             <div className="flex mb-4">
               <div className="mr-4">
-                <span className="font-bold text-gray-700">Location: </span>
-                <span className="text-gray-600">{location}</span>
+                <span className="font-bold ">Location: </span>
+                <span className="">{location}</span>
               </div>
               <div>
-                <span className="font-bold text-gray-700">
+                <span className="font-bold ">
                   Running Distance:{" "}
                 </span>
-                <span className="text-gray-600">{running_distance} Km</span>
+                <span className="">{running_distance} Km</span>
               </div>
             </div>
             <div className="mb-4">
-              <span className="font-bold text-gray-700">
+              <span className="font-bold ">
                 Registration Count:{" "}
               </span>
-              <span className="text-gray-600">{registrationCount} person</span>
+              <span className="">{registrationCount} person</span>
             </div>
             {/* Size Selection */}
             <div className="mb-4 space-y-2">
               <div>
-                <span className="font-bold text-gray-700 underline">
+                <span className="font-bold  underline">
                   Registration starts:
                 </span>{" "}
                 {start_registration}{" "}
               </div>
               <div>
-                <span className="font-bold text-gray-700 underline">
+                <span className="font-bold  underline">
                   Registration ends:
                 </span>{" "}
                 {end_registration}{" "}
               </div>
               <div>
-                <span className="font-bold text-gray-700 underline">
+                <span className="font-bold underline">
                   Created Time:
                 </span>{" "}
                 {created_time}{" "}
               </div>
               <div>
-                <span className="font-bold text-gray-700 underline">
+                <span className="font-bold  underline">
                   Marathon Start:
                 </span>{" "}
                 {marathon_start}{" "}
@@ -131,7 +131,7 @@ export default function MarathonDetails() {
             </div>
             {/* organizer details */}
             <div className="my-3">
-              <span className="font-bold text-gray-700">
+              <span className="font-bold ">
                 Organizer Details:
               </span>
               <div className="flex gap-2 items-center">
@@ -144,10 +144,10 @@ export default function MarathonDetails() {
             </div>
             {/* Product Description */}
             <div>
-              <span className="font-bold text-gray-700">
+              <span className="font-bold ">
                 Marathon Description:
               </span>
-              <p className="text-gray-600 text-sm mt-2 text-wrap">
+              <p className=" text-sm mt-2 text-wrap">
                 {description}
               </p>
             </div>

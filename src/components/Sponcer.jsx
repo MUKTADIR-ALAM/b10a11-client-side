@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Sponcer() {
   return (
-    <section className="text-gray-600 body-font mt-14 my-8">
-      <h1 className="font-extrabold text-2xl text-black">Our Sponsor</h1>
+    <section className=" body-font mt-14 my-8">
+      <h1 className="font-extrabold text-2xl ">Our Sponsor</h1>
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap -m-4 text-center">
           <div className="p-4 sm:w-1/4 w-1/2">
