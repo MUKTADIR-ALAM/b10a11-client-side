@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 export default function Navbar() {
   const { user, signOutUser } = useContext(AuthContext);
