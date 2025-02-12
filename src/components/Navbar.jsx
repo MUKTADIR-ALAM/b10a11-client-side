@@ -6,7 +6,7 @@ export default function Navbar() {
   const { user, signOutUser } = useContext(AuthContext);
   console.log(user);
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 sticky top-0 z-50 p-4 px-8">
       {/* dropdown start */}
       <div className="dropdown z-10">
         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
