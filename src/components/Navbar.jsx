@@ -1,11 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
-import { FaMoon, FaSun } from "react-icons/fa";
 
 export default function Navbar() {
   const { user, signOutUser } = useContext(AuthContext);
-  console.log(user);
+
+  const [darkmode, setdarkmode] = useState();
+  const setDarkMode = () => {
+    document.querySelector("html").setAttribute("data-theme", "light");
+  };
+  const setLightMode = () => {
+    document.querySelector("html").setAttribute("data-theme", "dark");
+  };
+  const toggleTheme = (e) => {
+    if (e.target.checked) setDarkMode();
+    else setLightMode();
+  };
+
+
   return (
     <div className="navbar bg-base-100 sticky top-0 z-50 p-4 px-8">
       {/* dropdown start */}
@@ -130,6 +142,7 @@ export default function Navbar() {
                 <button onClick={signOutUser}>Logout</button>
               </li>
             </ul>
+            <input onClick={toggleTheme} type="checkbox" className="toggle" />
           </div>
         ) : (
           <div className="space-x-1">
@@ -139,6 +152,7 @@ export default function Navbar() {
             <Link to={"/register"} className="btn">
               register
             </Link>
+            <input onClick={toggleTheme} type="checkbox" className="toggle" />
           </div>
         )}
       </div>
