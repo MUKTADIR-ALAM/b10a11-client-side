@@ -16,6 +16,7 @@ import DashboardContent from "../pages/DashboardContent";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../pages/ErrorPage";
 import AboutUs from "../pages/AboutUs";
+import ContactUs from "../pages/ContactUs";
 
 export const Routes = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const Routes = createBrowserRouter([
       {
         path:'/aboutUs',
         element: <AboutUs/>
+      },
+      {
+        path:'/contactUs',
+        element: <ContactUs/>
       },
       {
         path: "/dashboard",

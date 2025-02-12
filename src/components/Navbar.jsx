@@ -35,6 +35,12 @@ export default function Navbar() {
           <li>
             <NavLink to={"/allMarathon"}>Marathons</NavLink>
           </li>
+          <li>
+            <NavLink to={"/aboutUs"}>About Us</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/contactUs"}>Contact Us</NavLink>
+          </li>
           {user && (
             <li>
               <NavLink to={"/dashboard"}>Dashboard</NavLink>
@@ -72,6 +78,9 @@ export default function Navbar() {
             </li>
             <li>
               <NavLink to={"/aboutUs"}>About Us</NavLink>
+            </li>
+            <li>
+              <NavLink to={"/contactUs"}>Contact Us</NavLink>
             </li>
             {user && (
               <li>
