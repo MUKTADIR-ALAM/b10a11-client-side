@@ -15,6 +15,7 @@ export default function Register() {
   } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
   const hadleGoogleLogin = () => {
     signInWithGoogle()
       .then((result) => {
@@ -26,6 +27,7 @@ export default function Register() {
         toast.error(err.message);
       });
   };
+  
   const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
   const navigate = useNavigate();

@@ -16,8 +16,8 @@ export default function UrgeWithPleasureComponent({marathon_start}) {
         return (
             <div className="text-center flex gap-3">
                 <div className="text-xl">{days}d</div>
-                <div className="text-lg">{hours}h</div>
-                <div>{minutes}m</div>
+                {/* <div className="text-lg">{hours}h</div>
+                <div>{minutes}m</div> */}
             </div>
         )
     }

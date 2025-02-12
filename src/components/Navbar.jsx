@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const { user, signOutUser } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className="navbar bg-base-100">
       {/* dropdown start */}
@@ -68,6 +69,9 @@ export default function Navbar() {
             </li>
             <li>
               <NavLink to={"/allMarathon"}>Marathons</NavLink>
+            </li>
+            <li>
+              <NavLink to={"/aboutUs"}>About Us</NavLink>
             </li>
             {user && (
               <li>
